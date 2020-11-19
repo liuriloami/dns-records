@@ -14,7 +14,7 @@ class DnsRecord < ApplicationRecord
     end
 
     if hostnames_ignored.present?
-      dns_records = dns_records.filter! { |dns_record| (dns_record.hostnames.map(&:value) & hostnames_ignored).empty? }
+      dns_records = dns_records.filter { |dns_record| (dns_record.hostnames.map(&:value) & hostnames_ignored).empty? }
     end
 
     dns_records.drop(PAGE_LIMIT * page).first(PAGE_LIMIT)
