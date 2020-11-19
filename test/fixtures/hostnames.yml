@@ -1,0 +1,15 @@
+google:
+  value: "google.com"
+  dns_records: [google]
+
+amazon:
+  value: "amazon.com"
+  dns_records: [amazon]
+
+prime:
+  value: "prime.amazon.com"
+  dns_records: [amazon]
+
+kindle:
+  value: "kindle.amazon.com"
+  dns_records: [amazon]

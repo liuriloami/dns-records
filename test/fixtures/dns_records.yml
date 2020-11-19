@@ -1,0 +1,17 @@
+google:
+  ip: "1.1.1.1"
+
+amazon:
+  ip: "2.2.2.2"
+
+amazon_prime:
+  ip: "3.3.3.3"
+
+kindle:
+  ip: "4.4.4.4"
+
+facebook:
+  ip: "5.5.5.5"
+
+yahoo:
+  ip: "6.6.6.6"

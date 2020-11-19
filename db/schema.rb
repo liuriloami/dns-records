@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_193600) do
+ActiveRecord::Schema.define(version: 2020_11_19_135242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_11_18_193600) do
   create_table "dns_records_hostnames", id: false, force: :cascade do |t|
     t.bigint "dns_record_id", null: false
     t.bigint "hostname_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["dns_record_id"], name: "index_dns_records_hostnames_on_dns_record_id"
     t.index ["hostname_id"], name: "index_dns_records_hostnames_on_hostname_id"
   end

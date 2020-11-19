@@ -11,7 +11,7 @@ class DnsRecordsController < ApplicationController
     if !page
       render json: { error: 'Page is required' }, status: 400
     else
-      dns_records = DnsRecord.by_hostnames(hostnames_required, hostnames_ignored, page)
+      dns_records = DnsRecord.by_hostnames(hostnames_required: hostnames_required, hostnames_ignored: hostnames_ignored, page: page.to_i)
       hostnames = dns_records.map(&:hostnames).flatten.uniq
 
       render json: {
