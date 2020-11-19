@@ -11,13 +11,8 @@ class DnsRecordsController < ApplicationController
     if !page
       render json: { error: 'Page is required' }, status: 400
     else
-      hostnames = hostnames_required.present? ? Hostname.where(value: hostnames_required) : Hostname.all
-      dns_records = hostnames.map(&:dns_records)
-                             .flatten
-                             .uniq
-                             .filter { |dns_record| (dns_record.hostnames.map(&:value) & hostnames_ignored).empty? }
-                             .drop(PAGE_LIMIT * page).first(PAGE_LIMIT)
-      hostnames = hostnames.filter { |hostname| (hostname.dns_records & dns_records).present? }
+      dns_records = DnsRecord.by_hostnames(hostnames_required, hostnames_ignored, page)
+      hostnames = dns_records.map(&:hostnames).flatten.uniq
 
       render json: {
           total: dns_records.size,
